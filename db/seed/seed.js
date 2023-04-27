@@ -12,7 +12,7 @@ const seed = ({winnieData, activityData}) => {
             winnie_id SERIAL PRIMARY KEY,
             name VARCHAR(200),
             location VARCHAR(200),
-            image VARCHAR(200)
+            image VARCHAR(500)
         );`)
     })
     .then(() => {
@@ -20,7 +20,7 @@ const seed = ({winnieData, activityData}) => {
             activity_id SERIAL PRIMARY KEY,
             location VARCHAR(200),
             activity VARCHAR(200),
-            image VARCHAR(200)
+            image VARCHAR(500)
         );`)
     })
     .then(() => {
@@ -32,6 +32,17 @@ const seed = ({winnieData, activityData}) => {
                 winnieData.map(({name, location, image}) => [name, location, image])
         );
         return db.query(formattedWinnie)
+    })
+    .then(() => {
+        const formattedActivities = format(
+            `INSERT INTO activities (
+                location, activity, image
+            )
+            VALUES
+            %L RETURNING *;`,
+            activityData.map(({location, activity, image}) => [location, activity, image])
+        );
+        return db.query(formattedActivities)
     })
 }
 

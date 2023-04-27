@@ -69,5 +69,10 @@ describe('APP', () => {
           expect(body.activity.image).toBe('https://i.imgur.com/9QJr1jh.png');
         });
     });
+    test('should return a 404 error when attempting to post to the wrong URL', () => {
+        return request(app)
+        .post('/api/activities/abcd')
+        .expect(404)
+    });
   });
 });

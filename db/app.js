@@ -1,12 +1,13 @@
 const express = require('express');
 
-const { getWinnie } = require('./controller');
+const { getWinnie, getActivities } = require('./controller');
 
 const app = express();
 
 app.use(express.json());
 
 app.get('/api/winnie', getWinnie);
+app.get('/api/activities', getActivities)
 
 app.use((err, request, response, next) => {
   if (err.status) {

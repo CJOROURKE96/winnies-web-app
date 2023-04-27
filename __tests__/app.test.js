@@ -34,4 +34,25 @@ describe('APP', () => {
             .expect(404)
         });
     });
+    
+    describe('GET /api/activities', () => {
+        test('should return an array of activities, with the status code 200', () => {
+            return request(app)
+            .get('/api/activities')
+            .expect(200)
+            .then(({body}) => {
+                expect(body.length).toBe(2)
+                body.forEach((activity) => {
+                    expect(activity).toHaveProperty("location", expect.any(String))
+                    expect(activity).toHaveProperty("activity", expect.any(String))
+                    expect(activity).toHaveProperty("image", expect.any(String))
+                })
+            })
+        });
+        test('should return a 404 error when accessing the wrong URL:', () => {
+            return request(app)
+            .get('/api/activities/abcd')
+            .expect(404)
+        });
+    });
 });

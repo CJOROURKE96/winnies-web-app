@@ -28,5 +28,10 @@ describe('APP', () => {
                 })
             })
         });
+        test('should return a 404 error when accessing the wrong URL', () => {
+            return request(app)
+            .get('/api/winnie/abcd')
+            .expect(404)
+        });
     });
 });

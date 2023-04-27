@@ -1,4 +1,5 @@
-const { fetchWinnie, fetchActivities } = require('./model');
+const { response } = require('./app');
+const { fetchWinnie, fetchActivities, addActivity } = require('./model');
 
 function getWinnie(request, response, next) {
   fetchWinnie()
@@ -9,11 +10,19 @@ function getWinnie(request, response, next) {
 }
 
 function getActivities(request, response, next) {
-    fetchActivities()
+  fetchActivities(request.body)
     .then((activities) => {
-        response.status(200).send(activities)
+      response.status(200).send(activities);
     })
-    .catch(next)
+    .catch(next);
 }
 
-module.exports = { getWinnie, getActivities };
+function postNewActivity(request, response, next) {
+  addActivity(request.body)
+    .then((newActivity) => {
+      response.status(201).send({ activity: newActivity });
+    })
+    .catch(next);
+}
+
+module.exports = { getWinnie, getActivities, postNewActivity };

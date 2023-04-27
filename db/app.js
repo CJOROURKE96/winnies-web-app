@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getWinnie, getActivities } = require('./controller');
+const { getWinnie, getActivities, postNewActivity } = require('./controller');
 
 const app = express();
 
@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.get('/api/winnie', getWinnie);
 app.get('/api/activities', getActivities)
+app.post('/api/activities', postNewActivity)
 
 app.use((err, request, response, next) => {
   if (err.status) {

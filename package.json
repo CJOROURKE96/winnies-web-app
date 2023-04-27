@@ -1,8 +1,12 @@
 {
+  "name": "winnies-web-app-be",
+  "main": "listen.js",
   "scripts": {
     "setup-db": "psql -f ./db/setup.sql",
     "seed": "node ./db/seed/run-seed.js",
-    "test": "jest"
+    "test": "jest",
+    "start": "node listen.js",
+    "seed-prod": "NODE_ENV=production npm run seed"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

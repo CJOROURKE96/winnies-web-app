@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS winnies-web-app
-DROP DATABASE IF EXISTS winnies-web-app-test
+DROP DATABASE IF EXISTS winnies_web_app;
+DROP DATABASE IF EXISTS winnies_web_app_test;
 
-CREATE DATABASE winnies-web-app
-CREATE DATABASE winnies-web-app-test
+CREATE DATABASE winnies_web_app;
+CREATE DATABASE winnies_web_app_test;

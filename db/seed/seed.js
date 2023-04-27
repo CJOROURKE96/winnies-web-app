@@ -3,9 +3,9 @@ const format = require('pg-format')
 
 const seed = ({winnieData, activityData}) => {
     return db
-    .query(`DROP TABLE IF EXISTS winnie CASCADE;`)
+    .query(`DROP TABLE IF EXISTS winnie;`)
     .then(() => {
-        return db.query(`DROP TABLE IF EXISTS activities CASCADE;`)
+        return db.query(`DROP TABLE IF EXISTS activities;`)
     })
     .then(() => {
         return db.query(`CREATE TABLE winnie (

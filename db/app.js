@@ -4,6 +4,7 @@ const { getWinnie, getActivities, postNewActivity } = require('./controller');
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 
 app.get('/api/winnie', getWinnie);

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 
 const { getWinnie, getActivities, postNewActivity } = require('./controller');
 

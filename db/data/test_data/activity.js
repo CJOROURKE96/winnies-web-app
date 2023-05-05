@@ -2,7 +2,7 @@ module.exports = [
   {
     location: 'Bamber Bridge',
     activity: 'Relaxing',
-    image: 'https://i.imgur.com/IUZ1ZbS.png',
+    image: 'https://i.imgur.com/9QJr1jh.png',
   },
   {
     location: 'test',

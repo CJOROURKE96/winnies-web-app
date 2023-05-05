@@ -1,4 +1,3 @@
-const { response } = require('./app');
 const { fetchWinnie, fetchActivities, addActivity } = require('./model');
 
 function getWinnie(request, response, next) {

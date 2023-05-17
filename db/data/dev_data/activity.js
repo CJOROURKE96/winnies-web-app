@@ -2,6 +2,6 @@ module.exports = [
   {
     location: 'Bamber Bridge',
     activity: 'Relaxing',
-    image: 'https://i.imgur.com/9QJr1jh.png',
+    image: 'https://i.imgur.com/4Qi35xf.jpg',
   },
 ];

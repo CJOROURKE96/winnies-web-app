@@ -19,7 +19,7 @@ function getActivities(request, response, next) {
 function postNewActivity(request, response, next) {
   addActivity(request.body)
     .then((newActivity) => {
-      response.status(201).send({ activity: newActivity });
+      response.status(201).send({ activity: newActivity[1] });
     })
     .catch(next);
 }

@@ -9,7 +9,7 @@ function getWinnie(request, response, next) {
 }
 
 function getActivities(request, response, next) {
-  fetchActivities(request.body)
+  fetchActivities()
     .then((activities) => {
       response.status(200).send(activities);
     })

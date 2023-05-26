@@ -70,9 +70,45 @@ describe('APP', () => {
         });
     });
     test('should return a 404 error when attempting to post to the wrong URL', () => {
-        return request(app)
-        .post('/api/activities/abcd')
-        .expect(404)
+      return request(app).post('/api/activities/abcd').expect(404);
+    });
+  });
+  describe('PATCH /api/activities/:activity_id', () => {
+    test('should update only the location section', () => {
+      const newLocation = {
+        location: 'Home',
+      };
+      return request(app)
+        .patch('/api/activities/1')
+        .send(newLocation)
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.activity.location).toBe('Home');
+        });
+    });
+    test('should update only the activity section', () => {
+      const newActivity = {
+        activity: 'Sleeping',
+      };
+      return request(app)
+        .patch('/api/activities/1')
+        .send(newActivity)
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.activity.activity).toBe('Sleeping');
+        });
+    });
+    test('should update only the image section', () => {
+      const newImage = {
+        image: "test image"
+      }
+      return request(app)
+      .patch('/api/activities/1')
+      .send(newImage)
+      .expect(200)
+      .then(({body}) => {
+        expect(body.activity.image).toBe("test image")
+      })
     });
   });
 });

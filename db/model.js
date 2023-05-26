@@ -35,4 +35,15 @@ function addActivity(data) {
     });
 }
 
-module.exports = { fetchWinnie, fetchActivities, addActivity };
+function updateActivity(activity_id, location, activity, image) {
+  const query = `UPDATE activities SET location = COALESCE($1, location), activity = COALESCE($2, activity), image = COALESCE($3, image) WHERE activity_id = $4 RETURNING *;`;
+  return db
+    .query(query, [location, activity, image, activity_id])
+    .then(({ rows }) => {
+      if (rows.length === 0) {
+        return Promise.reject({ status: 400, msg: 'Not Found' });
+      } else return rows[0];
+    });
+}
+
+module.exports = { fetchWinnie, fetchActivities, addActivity, updateActivity };

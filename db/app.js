@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors')
 
-const { getWinnie, getActivities, postNewActivity } = require('./controller');
+const { getWinnie, getActivities, postNewActivity, patchActivity } = require('./controller');
 
 const app = express();
 
@@ -11,6 +11,7 @@ app.use(express.json());
 app.get('/api/winnie', getWinnie);
 app.get('/api/activities', getActivities)
 app.post('/api/activities', postNewActivity)
+app.patch('/api/activities/:activity_id', patchActivity)
 
 app.use((err, request, response, next) => {
   if (err.status) {
